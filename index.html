@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test-task</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+<section id="demo-app">
+    <div class="container">
+        <h1>Demo Application Title</h1>
+        <table id="table" class="table table-bordered">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>Название</td>
+                <td>Авторы</td>
+                <td>Дата выпуска</td>
+                <td>Серийный номер</td>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</section>
+<div class="modal-window">
+    <h3 class="name">Затерянный мир</h3>
+    <img class="image" src="http://cm.mmi.macc.com.ua/tests/images/cover1.jpg">
+    <div class="top">
+        Авторы: <span class="author">Артур Конан Дойль</span>
+        Дата выпуска: <span class="date">11-11-2016</span>
+        Номер: <span class="number">1111-1111-3333-4444</span>
+    </div>
+    <div class="description">
+        «В воскресенье 24 мая 1863 года мой дядя, профессор Отто Лиденброк, быстрыми шагами подходил к своему домику, номер 19 по Королевской улице – одной из самых старинных улиц древнего квартала Гамбурга.Наша служанка Марта, наверно, подумала, что она запоздала с обедом, так как суп на плите лишь начинал закипать…»
+    </div>
+    <span class="close-modal">
+        <i class="fa fa-times" aria-hidden="true"></i>
+    </span>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $.getJSON('http://cm.mmi.macc.com.ua/tests/sample.php', function (data) {
+            for (var i = 0; i < data.length; i++) {
+                $('#table tbody').append('<tr data-description="' + data[i].description + '" data-image="' + data[i].image + '">' +
+                        '<td class="id">' + data[i].id + '</td>' +
+                        '<td class="name">' + data[i].name + '</td>' +
+                        '<td class="author">' + data[i].author + '</td>' +
+                        '<td class="date">' + data[i].date + '</td>' +
+                        '<td class="number">' + data[i].number +'</td>' +
+                        '</tr>');
+            }
+        });
+        $('#table').on('click','.number',function () {
+            $('.modal-window .name').text($(this).siblings('.name').text());
+            $('.modal-window .image').attr('src',$(this).parent().attr('data-image'));
+            $('.modal-window .author').text($(this).siblings('.author').text());
+            $('.modal-window .date').text($(this).siblings('.date').text());
+            $('.modal-window .number').text($(this).text());
+            $('.modal-window .description').text($(this).parent().attr('data-description'));
+            $('.modal-window').show();
+        });
+        $('.modal-window .close-modal').click(function () {
+            $('.modal-window').hide();
+        });
+    });
+</script>
+</body>
+</html>

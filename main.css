@@ -1,0 +1,69 @@
+#demo-app h1 {
+    border-bottom: 1px solid #555;
+    padding-bottom: 3px;
+    margin-bottom: 40px;
+}
+
+#demo-app table thead {
+    background: #efefef;
+}
+
+#demo-app table .number:hover {
+    cursor: pointer;
+}
+
+.modal-window {
+    background: #fff;
+    position: fixed;
+    width: 600px;
+    left: calc(50% - 275px);
+    top: 50%;
+    border: 1px solid #555;
+    padding: 15px;
+    transform: translateY(-50%);
+    display: none;
+}
+
+.modal-window h3 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.modal-window .image {
+    display: block;
+    width: 152px;
+    margin: 10px auto 20px auto;
+}
+
+.modal-window .top {
+    border-bottom: 1px solid #555;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+.modal-window .top span:not(:nth-last-of-type(1)) {
+    border-right: 1px solid #555;
+    padding-right: 7px;
+    margin-right: 2px;
+}
+
+.modal-window .close-modal {
+    display: block;
+    padding: 0 10px 2px 10px;
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    border: 1px solid #555;
+    background: #eee;
+    line-height: 20px;
+}
+
+.modal-window .close-modal i {
+    vertical-align: middle;
+    line-height: 20px;
+    color: #555;
+}
+
+.modal-window .close-modal:hover {
+    cursor: pointer;
+    background: #ddd;
+}
